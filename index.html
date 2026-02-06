@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShopNow - Premium Store</title>
+
+<style>
+/* ===== COLORFUL ANIMATED BACKGROUND ===== */
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb, #84fab0, #8fd3f4);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* SMALL TOP BANNER */
+.mini-banner{
+    background:linear-gradient(90deg,#ff416c,#ff4b2b,#ff416c);
+    color:white;
+    text-align:center;
+    padding:8px;
+    font-size:15px;
+    font-weight:bold;
+    letter-spacing:1px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    padding:12px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+/* NAV BUTTON */
+.nav-btn{
+    background:linear-gradient(90deg,#ffd194,#ff9f00);
+    color:black;
+    padding:8px 12px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+.nav-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 10px #ff9f00;
+}
+
+/* SEARCH BAR */
+.search-box{
+    padding:8px;
+    width:300px;
+    border-radius:20px;
+    border:none;
+    outline:none;
+    box-shadow:0 0 6px rgba(255,255,255,0.3);
+}
+
+/* ===== NEW UPPER SECTION ===== */
+.upper-section{
+    background:rgba(255,255,255,0.6);
+    backdrop-filter:blur(5px);
+    margin:20px;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+/* PRODUCTS GRID */
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    padding:20px;
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(6px);
+    border-radius:15px;
+    margin:20px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+/* PRODUCT CARD */
+.product{
+    background:white;
+    padding:12px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.15);
+    text-align:center;
+    transition:0.3s;
+}
+.product:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 0 15px #ff9f00;
+}
+
+/* PRODUCT IMAGE */
+.product img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* BILL PREVIEW */
+.bill-preview{
+    background:linear-gradient(120deg,#fff3e0,#ffe0b2);
+    padding:20px;
+    text-align:center;
+    margin:20px;
+    border-radius:12px;
+    box-shadow:0 0 10px gray;
+}
+
+/* FAVORITES */
+.favorites{
+    background:white;
+    padding:30px;
+    text-align:center;
+    margin:20px;
+    border-radius:12px;
+    box-shadow:0 0 10px gray;
+}
+
+/* REVIEWS */
+.reviews{
+    background:linear-gradient(120deg,#e3f2fd,#bbdefb);
+    padding:30px;
+    text-align:center;
+    margin:20px;
+    border-radius:12px;
+}
+.review-box{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    width:60%;
+    margin:10px auto;
+    box-shadow:0 0 8px gray;
+}
+
+/* CART SIDEBAR */
+.cart-sidebar{
+    position:fixed;
+    right:-400px;
+    top:0;
+    width:350px;
+    height:100%;
+    background:white;
+    box-shadow:-2px 0 15px #ccc;
+    padding:20px;
+    transition:0.4s;
+}
+.cart-sidebar.open{ right:0; }
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+}
+.modal-content{
+    background:white;
+    width:50%;
+    margin:8% auto;
+    padding:20px;
+    text-align:center;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(0,0,0,0.3);
+}
+
+/* PAYMENT UI */
+.payment-options{
+    display:flex;
+    justify-content:space-around;
+}
+.payment-box{
+    width:45%;
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+.qr{ width:180px; }
+
+/* FLOATING OFFER */
+.floating-offer{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:linear-gradient(90deg,#00c6ff,#0072ff);
+    color:white;
+    padding:10px 12px;
+    border-radius:20px;
+    font-size:14px;
+    box-shadow:0 0 10px gray;
+}
+
+/* BUTTON */
+button{
+    background:#ff9f00;
+    color:black;
+    border:none;
+    padding:8px 12px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+button:hover{
+    transform:scale(1.05);
+}
+
+/* FOOTER */
+footer{
+    background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .products{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+    .products{grid-template-columns:1fr;}
+}
+</style>
+
+<script>
+let cart = [];
+
+function addToCart(name,price){
+    let item = cart.find(p=>p.name===name);
+    if(item) item.qty++;
+    else cart.push({name,price,qty:1});
+
+    document.getElementById("cartCount").innerText =
+        cart.reduce((a,b)=>a+b.qty,0);
+
+    updateBill();
+}
+
+function updateBill(){
+    let total = cart.reduce((sum,i)=>sum+i.price*i.qty,0);
+    document.getElementById("billTotal").innerText = total;
+}
+
+function openCart(){
+    document.getElementById("cartSidebar").classList.add("open");
+    renderCart();
+}
+function closeCart(){
+    document.getElementById("cartSidebar").classList.remove("open");
+}
+function renderCart(){
+    let list="";
+    if(cart.length===0){
+        list = "<p>Your cart is empty</p>";
+    } else {
+        cart.forEach((i,idx)=>{
+            list += `<p>${i.name} - ₹${i.price} x ${i.qty}
+            <button onclick="removeItem(${idx})">Remove</button></p>`;
+        });
+    }
+    document.getElementById("cartItems").innerHTML = list;
+}
+function removeItem(i){
+    cart.splice(i,1);
+    renderCart();
+    updateBill();
+}
+
+function openLogin(){ document.getElementById("loginModal").style.display="block"; }
+function closeLogin(){ document.getElementById("loginModal").style.display="none"; }
+
+function showCheckout(){
+    document.getElementById("checkout").style.display="block";
+}
+
+function showPayment(){
+    document.getElementById("checkout").style.display="none";
+    document.getElementById("paymentModal").style.display="block";
+}
+
+function payNow(){
+    alert("✅ Payment Successful! Order Confirmed 🎉");
+}
+</script>
+</head>
+
+<body>
+
+<div class="mini-banner">
+🔥 Limited Time Offer | Extra 10% OFF on Electronics 🔥
+</div>
+
+<header>
+  <div class="logo">ShopNow 🛒</div>
+  <input class="search-box" placeholder="Search products...">
+  <span class="nav-btn" onclick="openLogin()">Login / Signup</span>
+  <span class="nav-btn" onclick="openCart()">Cart (<span id="cartCount">0</span>)</span>
+</header>
+
+<!-- NEW UPPER SECTION -->
+<section class="upper-section">
+<h2>🚀 Why Shop With ShopNow?</h2>
+<p>
+✔ Fast Delivery | ✔ Secure Payment | ✔ Easy Returns | ✔ 24/7 Support  
+</p>
+<p style="font-size:14px;">
+Exclusive deals, trusted brands, and premium quality — all in one place.
+</p>
+</section>
+
+<h2 style="text-align:center;color:white;text-shadow:2px 2px 5px black;">
+🔥 Trending Products 🔥
+</h2>
+
+<div class="products">
+
+<!-- FIRST 20 PRODUCTS (same as before) -->
+<div class="product"><img src="https://images.unsplash.com/photo-1510552776732-01a4d2d3e0b6"><h3>Smartphone</h3><p>₹15999</p><button onclick="addToCart('Smartphone',15999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8"><h3>Laptop</h3><p>₹49999</p><button onclick="addToCart('Laptop',49999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1517059224940-d4af9eec41b7"><h3>Tablet</h3><p>₹21999</p><button onclick="addToCart('Tablet',21999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1519885277449-4d3c67a9b7c5"><h3>Backpack</h3><p>₹1299</p><button onclick="addToCart('Backpack',1299)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68"><h3>Camera</h3><p>₹34999</p><button onclick="addToCart('Camera',34999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad"><h3>Power Bank</h3><p>₹1599</p><button onclick="addToCart('Power Bank',1599)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04"><h3>Smart TV</h3><p>₹39999</p><button onclick="addToCart('Smart TV',39999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329"><h3>Wireless Mouse</h3><p>₹699</p><button onclick="addToCart('Wireless Mouse',699)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90"><h3>Gaming Headset</h3><p>₹2999</p><button onclick="addToCart('Gaming Headset',2999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f"><h3>Fitness Band</h3><p>₹1999</p><button onclick="addToCart('Fitness Band',1999)">Add to Cart</button></div>
+
+<!-- NEW 10 PRODUCTS -->
+<div class="product"><img src="https://images.unsplash.com/photo-1580894894511-1b3f5f5f9f58"><h3>Bluetooth Speaker</h3><p>₹2499</p><button onclick="addToCart('Bluetooth Speaker',2499)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"><h3>Mechanical Keyboard</h3><p>₹3999</p><button onclick="addToCart('Mechanical Keyboard',3999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1616077167599-6cd5a36a33b3"><h3>Wireless Earbuds</h3><p>₹1999</p><button onclick="addToCart('Wireless Earbuds',1999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1503602642458-232111445657"><h3>Drone</h3><p>₹59999</p><button onclick="addToCart('Drone',59999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1518441901518-4b1f5f7d9b7b"><h3>Smart Light</h3><p>₹999</p><button onclick="addToCart('Smart Light',999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1500534623283-3127429c5533"><h3>Router</h3><p>₹1999</p><button onclick="addToCart('Router',1999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f"><h3>Smart Glasses</h3><p>₹8999</p><button onclick="addToCart('Smart Glasses',8999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1510552776732-01a4d2d3e0b6"><h3>Mini Phone</h3><p>₹7999</p><button onclick="addToCart('Mini Phone',7999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8"><h3>Gaming Laptop</h3><p>₹79999</p><button onclick="addToCart('Gaming Laptop',79999)">Add to Cart</button></div>
+<div class="product"><img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04"><h3>4K Monitor</h3><p>₹29999</p><button onclick="addToCart('4K Monitor',29999)">Add to Cart</button></div>
+
+</div>
+
+<!-- BILL PREVIEW -->
+<section class="bill-preview">
+<h2>🧾 Your Cart Bill Preview</h2>
+<p>Total Amount: ₹<span id="billTotal">0</span></p>
+</section>
+
+<!-- FAVORITES -->
+<section class="favorites">
+<h2>⭐ Customer Favorites</h2>
+<p>Smartphone • Laptop • Smart TV • Gaming Headset • Power Bank</p>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+<h2>What Our Customers Say</h2>
+<div class="review-box">“Amazing products and super fast delivery!” — Rahul</div>
+<div class="review-box">“Best online shopping experience ever.” — Priya</div>
+<div class="review-box">“Great discounts and genuine products.” — Aman</div>
+</section>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+<div class="modal-content">
+<h2>Login / Signup</h2>
+<input type="email" placeholder="Email"><br><br>
+<input type="password" placeholder="Password"><br><br>
+<button onclick="closeLogin()">Login</button>
+</div>
+</div>
+
+<!-- CART SIDEBAR -->
+<div id="cartSidebar" class="cart-sidebar">
+<h2>Your Cart</h2>
+<div id="cartItems"></div>
+<button onclick="closeCart()">Close</button>
+<button onclick="showCheckout()">Checkout</button>
+</div>
+
+<!-- CHECKOUT -->
+<div id="checkout" class="modal">
+<div class="modal-content">
+<h2>Checkout</h2>
+<input placeholder="Full Name"><br><br>
+<input placeholder="Address"><br><br>
+<input placeholder="Phone"><br><br>
+<button onclick="showPayment()">Proceed to Payment</button>
+</div>
+</div>
+
+<!-- PAYMENT UI -->
+<div id="paymentModal" class="modal">
+<div class="modal-content">
+<h2>💳 Select Payment Method</h2>
+<div class="payment-options">
+<div class="payment-box">
+<h3>📱 UPI Payment</h3>
+<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=shopnow@upi">
+<button onclick="payNow()">Confirm UPI</button>
+</div>
+<div class="payment-box">
+<h3>💳 Card Payment</h3>
+<input placeholder="Card Number"><br><br>
+<input placeholder="Name on Card"><br><br>
+<input placeholder="MM/YY"><br><br>
+<input placeholder="CVV"><br><br>
+<button onclick="payNow()">Pay Now</button>
+</div>
+</div>
+</div>
+
+<!-- FLOATING OFFER -->
+<div class="floating-offer">
+🎁 Extra Cashback on First Order!
+</div>
+
+<footer>
+<p>© 2026 ShopNow | Trusted Online Store</p>
+</footer>
+
+</body>
+</html>
