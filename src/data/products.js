@@ -161,5 +161,23 @@ export const products = [
     category: 'Fitness',
     image: '/images/products/yoga-mat.jpg',
     rating: 4.7
+  },
+  {
+    id: 19,
+    name: 'Fitness Tracker',
+    price: 79.99,
+    description: 'Compact fitness tracker with step counter and heart rate monitor',
+    category: 'Electronics',
+    image: '/images/products/smart-watch.jpg',
+    rating: 4.4
+  },
+  {
+    id: 20,
+    name: 'Power Bank',
+    price: 45.99,
+    description: 'High-capacity power bank with fast charging support',
+    category: 'Electronics',
+    image: '/images/products/wireless-charger.jpg',
+    rating: 4.5
   }
 ];
