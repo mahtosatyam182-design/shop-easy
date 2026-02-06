@@ -179,5 +179,95 @@ export const products = [
     category: 'Electronics',
     image: '/images/products/wireless-charger.jpg',
     rating: 4.5
+  },
+  {
+    id: 21,
+    name: 'Wireless Earbuds',
+    price: 59.99,
+    description: 'True wireless earbuds with immersive sound quality',
+    category: 'Electronics',
+    image: '/images/products/wireless-headphones.jpg',
+    rating: 4.6
+  },
+  {
+    id: 22,
+    name: 'Travel Backpack',
+    price: 89.99,
+    description: 'Anti-theft travel backpack with USB charging port',
+    category: 'Accessories',
+    image: '/images/products/backpack.jpg',
+    rating: 4.5
+  },
+  {
+    id: 23,
+    name: 'Portable Speaker',
+    price: 49.99,
+    description: 'Waterproof portable speaker with 12-hour battery life',
+    category: 'Electronics',
+    image: '/images/products/bluetooth-speaker.jpg',
+    rating: 4.4
+  },
+  {
+    id: 24,
+    name: 'Smart Thermostat',
+    price: 129.99,
+    description: 'WiFi smart thermostat with voice control compatibility',
+    category: 'Home',
+    image: '/images/products/desk-lamp.jpg',
+    rating: 4.7
+  },
+  {
+    id: 25,
+    name: 'Hoodie',
+    price: 54.99,
+    description: 'Comfortable cotton hoodie with kangaroo pocket',
+    category: 'Clothing',
+    image: '/images/products/canvas-backpack.jpg',
+    rating: 4.3
+  },
+  {
+    id: 26,
+    name: 'Tennis Shoes',
+    price: 79.99,
+    description: 'Lightweight tennis shoes with superior grip',
+    category: 'Footwear',
+    image: '/images/products/running-shoes.jpg',
+    rating: 4.5
+  },
+  {
+    id: 27,
+    name: 'Leather Belt',
+    price: 34.99,
+    description: 'Genuine leather belt with brushed metal buckle',
+    category: 'Accessories',
+    image: '/images/products/belt.jpg',
+    rating: 4.2
+  },
+  {
+    id: 28,
+    name: 'Gaming Mouse',
+    price: 39.99,
+    description: 'High-precision gaming mouse with RGB lighting',
+    category: 'Electronics',
+    image: '/images/products/wireless-mouse.jpg',
+    rating: 4.6
+  },
+  {
+    id: 29,
+    name: 'Monitor Stand',
+    price: 29.99,
+    description: 'Adjustable monitor stand with built-in USB hub',
+    category: 'Electronics',
+    image: '/images/products/laptop-stand.jpg',
+    rating: 4.4
+  },
+  {
+    id: 30,
+    name: 'Succulent Set',
+    price: 19.99,
+    description: 'Set of 4 adorable succulent plants in ceramic pots',
+    category: 'Home',
+    image: '/images/products/plant-pot-set.jpg',
+    rating: 4.8
   }
 ];
